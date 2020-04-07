@@ -3,7 +3,7 @@
 This project demos how to use JWT for auth.
 
 ## Install 
-- Install MongoDB on macos:
+Install MongoDB on macos:
 ```bash
 $ brew tap mongodb/brew
 $ brew install mongodb-community@4.2
@@ -11,19 +11,19 @@ $ brew install mongodb-community@4.2
 $ brew services start mongodb/brew/mongodb-community
 ```
 
-- Install npm libs:
+Install npm libs:
 ```bash
 $ npm i
 ```
 
-- Run the webserver:
+Run the webserver:
 ```bash
 $ npm run dev
 ```
 
 ## Example of auth flow
 
-- Create a new user - a new JWT is generated and returned:
+Create a new user - a new JWT is generated and returned:
 ```bash
 $ curl  http://localhost:3000/users -H "Content-Type: application/json" --data '{"name":"john","age":25,"email":"john@foo.bar","password":"mysecretword123"}' | jq
 {
@@ -40,7 +40,7 @@ $ curl  http://localhost:3000/users -H "Content-Type: application/json" --data '
 }
 ```
 
-- Hit an endpoint that requires auth:
+Hit an endpoint that requires auth:
 ```bash
 $ curl  http://localhost:3000/users/me -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZThjODdhZWNkYzIzYTQwNzcwYjg0NGIiLCJpYXQiOjE1ODYyNjgwNzgsImV4cCI6MTU4Njg3Mjg3OH0.kCWUuRJQGD2qK5sgWabILlueK5t2G9XjAGzWl3JqNaM" | jq
 {
@@ -56,5 +56,6 @@ $ curl  http://localhost:3000/users/me -H "Authorization: Bearer eyJhbGciOiJIUzI
 
 ## Code insights
 
-- JWT creation on login: ...
-- JWT verification when hitting an endpoint that requires auth: ...
+JWT creation on login (analogy of an auth server): [here](https://github.com/puntonim/jwt-auth-demo/blob/master/src/models/user.js#L96)
+
+JWT verification when hitting an endpoint that requires auth (analogy of a backend API service): [here](https://github.com/puntonim/jwt-auth-demo/blob/master/src/middleware/auth.js#L13)
